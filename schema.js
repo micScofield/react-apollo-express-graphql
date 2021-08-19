@@ -21,6 +21,8 @@ const LaunchType = new GraphQLObjectType({
     launch_date_local: { type: GraphQLString },
     launch_success: { type: GraphQLBoolean },
     rocket: { type: RocketType },
+    links: { type: LinkType },
+    details: { type: GraphQLString }
   }),
 });
 
@@ -33,6 +35,15 @@ const RocketType = new GraphQLObjectType({
     rocket_type: { type: GraphQLString },
   }),
 });
+
+// Link Type
+const LinkType = new GraphQLObjectType({
+  name: "Link",
+  fields: () => ({
+    video_link: { type: GraphQLString },
+    wikipedia: { type: GraphQLString }
+  })
+})
 
 // Specify all queries which our endpoint will support
 
@@ -57,7 +68,10 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return axios
           .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
-          .then((res) => res.data);
+          .then((res) => {
+            console.log(res.data)
+            return res.data
+          });
       },
     },
     rockets: {

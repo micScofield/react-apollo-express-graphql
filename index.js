@@ -5,19 +5,25 @@ const schema = require("./schema");
 const app = express();
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, X-Requested-With')
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST')
-    
-    next()
-})
-
-app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept, X-Requested-With"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST");
   if (req.method === "OPTIONS") {
     res.sendStatus(200);
+    next();
   }
-  next()
+  next();
 });
+
+// app.use((req, res, next) => {
+//   if (req.method === "OPTIONS") {
+//     res.sendStatus(200);
+//   }
+//   next()
+// });
 
 app.use(
   "/api/graphql",

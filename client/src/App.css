@@ -6,4 +6,64 @@
 
 body {
   background-color: black;
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  top: 0;
+  position: sticky;
+  max-height: 70px;
+  background-color: black;
+  opacity: 0.9;
+}
+
+.fail {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.success-box {
+  padding: 0.1rem 1.3rem;
+  background-color: green;
+  margin-right: 0.3rem;
+}
+
+.fail-box {
+  padding: 0.1rem 1.3rem;
+  background-color: red;
+  margin-right: 0.3rem;
 }
