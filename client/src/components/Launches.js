@@ -18,25 +18,6 @@ const LAUNCHES_QUERY = gql`
   }
 `;
 
-/*
-<Grid container spacing="4" justifyContent="space-around">
-              <Grid item xs={12} sm={6}>
-                <Paper
-                  style={{ height: "50px", width: "100%" }}
-                  component={test}
-                />
-              </Grid>
-
-              <Grid item xs={3} sm={6}>
-                <Paper style={{ height: "50px", width: "100%" }} />
-              </Grid>
-
-              <Grid item xs={3} lg={12}>
-                <Paper style={{ height: "50px", width: "100%" }} />
-              </Grid>
-            </Grid>
-*/
-
 function Launches({ history }) {
   console.log(history);
   return (
@@ -54,8 +35,8 @@ function Launches({ history }) {
           return (
             <Fragment>
               <Grid container spacing="4" justifyContent="space-around">
-              {data &&
-                data.launches.map((launch) => (
+                {data &&
+                  data.launches.map((launch) => (
                     <Grid item sm={12} xs={12} md={6}>
                       <LaunchItem
                         key={launch.flight_number}
@@ -63,9 +44,8 @@ function Launches({ history }) {
                         history={history}
                       />
                     </Grid>
-                ))}
+                  ))}
               </Grid>
-              
             </Fragment>
           );
         }}

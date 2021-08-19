@@ -1,6 +1,7 @@
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema");
+const path = require('path')
 
 const app = express();
 
@@ -11,19 +12,14 @@ app.use((req, res, next) => {
     "Origin, Content-Type, Accept, X-Requested-With"
   );
   res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, POST");
+
+  // graphql specific check
   if (req.method === "OPTIONS") {
     res.sendStatus(200);
     next();
   }
   next();
 });
-
-// app.use((req, res, next) => {
-//   if (req.method === "OPTIONS") {
-//     res.sendStatus(200);
-//   }
-//   next()
-// });
 
 app.use(
   "/api/graphql",
@@ -33,4 +29,12 @@ app.use(
   })
 );
 
-app.listen(5000, () => console.log("Server started on 5000"));
+app.use(express.static('public'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
+
+const PORT = process.env.port || 5000
+
+app.listen(PORT, () => console.log("Server started on 5000"));

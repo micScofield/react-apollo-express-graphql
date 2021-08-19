@@ -53,8 +53,6 @@ function Launch({ history, match }) {
     setExpanded(!expanded);
   };
 
-  //   const accordionCssClasses = []
-
   return (
     <Fragment>
       <div className="container">

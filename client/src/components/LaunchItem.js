@@ -7,16 +7,14 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import clsx from "clsx";
 
-import useStyles from '../utils/cardStyles';
+import useStyles from "../utils/cardStyles";
 
 function LaunchItem({
-  launch: { flight_number, mission_name, launch_date_local, launch_success }, history
+  launch: { flight_number, mission_name, launch_date_local, launch_success },
+  history,
 }) {
-  // specifying css classes for mission titles based on their success / failure
-  let cssClasses = [];
-  launch_success ? cssClasses.push("success") : cssClasses.push("fail");
-
   const classes = useStyles();
 
   return (
@@ -30,7 +28,14 @@ function LaunchItem({
               gutterBottom
             >
               Mission:{" "}
-              <span className={cssClasses.join("")}>{mission_name}</span>
+              <span
+                className={clsx({
+                  [classes.success]: launch_success,
+                  [classes.fail]: !launch_success,
+                })}
+              >
+                {mission_name}
+              </span>
             </Typography>
 
             <Typography className={classes.pos} color="textSecondary">

@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   root: {
     minWidth: "100%",
-    // maxWidth: "60%",
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
@@ -20,13 +19,16 @@ const useStyles = makeStyles({
   subtitle: {
     fontSize: 28,
   },
+  success: {
+    color: 'green'
+  },
+  fail: {
+    color: 'red'
+  },
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
-    transition: '1s'
-    // transition: theme.transitions.create('transform', {
-    //   duration: theme.transitions.duration.shortest,
-    // }),
+    transition: '300ms'
   },
   expandOpen: {
     transform: 'rotate(180deg)',
